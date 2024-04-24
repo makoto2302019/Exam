@@ -18,12 +18,12 @@ public class SubjectListAction extends Action {
 		Teacher teacher = (Teacher)session.getAttribute("user");
 		
 		ClassNumDao cNumDao = new ClassNumDao();// クラス番号Daoを初期化
-		SubjectDao sDao = new SubjectDao();// 
+		SubjectDao suDao = new SubjectDao();// 
 		 LocalDate todaysDate = LocalDate.now();// LcalDateインスタンスを取得	
 		 int year = todaysDate.getYear();
 		
 		//ログインユーザーの学校コードをもとに、ユーザーが所属している学校の科目一覧用データを取得
-		List<Subject> list = sDao.filter(teacher.getSchool());
+		List<Subject> list = suDao.filter(teacher.getSchool());
 		
 		
 		// リクエストにデータをセット
