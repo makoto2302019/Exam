@@ -9,7 +9,7 @@ public class Test {
 	   private School school;
 	   private int no;
 	   private int point;
-
+//
 	   public Student getStudent() {
 	       return student;
 	   }

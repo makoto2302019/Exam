@@ -6,7 +6,7 @@ public class Subject implements Serializable {
 
 	private String cd;
 	private String name;
-	private String school;
+	private School school;
 
 	public String getCd() {
 		return cd;
@@ -23,11 +23,12 @@ public class Subject implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSchool() {
+	public School getSchool() {
 		return school;
 	}
-	public void setSchool(String school){
+	public void setSchool(School school){
 		this.school = school;
 	}
+
 
 }
