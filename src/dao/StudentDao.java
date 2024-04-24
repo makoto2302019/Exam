@@ -11,6 +11,7 @@ import bean.School;
 import bean.Student;
 
 public class StudentDao extends Dao{
+	//テスト
 
 	private String baseSql = "select * from student where school_cd=?";
 
