@@ -11,9 +11,8 @@ import bean.School;
 import bean.Student;
 
 public class StudentDao extends Dao{
-	//テスト
 
-	private String baseSql = "select * from student where school_cd=?";
+	private String baseSql = "select * from student where student_no=?";
 
 	public Student get(String no) throws Exception {
 		// 学生インスタンスを初期化
