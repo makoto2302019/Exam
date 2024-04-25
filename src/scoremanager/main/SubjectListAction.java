@@ -23,7 +23,7 @@ public class SubjectListAction extends Action {
 		 int year = todaysDate.getYear();
 		
 		//ログインユーザーの学校コードをもとに、ユーザーが所属している学校の科目一覧用データを取得
-		List<bean.Subject> list = suDao.filter(teacher.getSchool());
+		List<Subject> list = suDao.filter(teacher.getSchool());
 		
 		
 		// リクエストにデータをセット
