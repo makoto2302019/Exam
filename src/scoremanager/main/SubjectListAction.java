@@ -3,13 +3,13 @@ package scoremanager.main;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Teacher;
 import dao.ClassNumDao;
+import dao.SubjectDao;
 import tool.Action;
 
 public class SubjectListAction extends Action {
@@ -23,7 +23,7 @@ public class SubjectListAction extends Action {
 		 int year = todaysDate.getYear();
 		
 		//ログインユーザーの学校コードをもとに、ユーザーが所属している学校の科目一覧用データを取得
-		List<Subject> list = suDao.filter(teacher.getSchool());
+		List<bean.Subject> list = suDao.filter(teacher.getSchool());
 		
 		
 		// リクエストにデータをセット
