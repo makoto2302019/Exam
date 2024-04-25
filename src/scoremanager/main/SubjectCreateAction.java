@@ -3,12 +3,12 @@ package scoremanager.main;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Teacher;
+import dao.ClassNumDao;
 import dao.SubjectDao;
 import tool.Action;
 
@@ -18,15 +18,22 @@ public class SubjectCreateAction extends Action {
 		HttpSession session = req.getSession();//セッション
 		Teacher teacher = (Teacher)session.getAttribute("user");
 		
-		String SubjectCode="";//入力された科目コード
-		String SubjectName="";//入力された科目名
-		
-		List<Subject> subject = null;//科目リスト
-		LocalDate todaysDate = LocalDate.now();//LcalDateインスタンスを取得
+		SubjectDao suDao = new SubjectDao();//科目Daoを初期化
+		LocalDate todaysDate = LocalDate.now();//LocalDateインスタンスを取得
+		ClassNumDao cNumDao = new ClassNumDao();// クラス番号Daoを初期化
 		int year = todaysDate.getYear();//現在の年を取得
-		SubjectDao suDao = new SubjectDao();
-		Map<>
+		
+		//ログインユーザーの学校コードをもとに科目の一覧を取得
+		List<Subject> list = suDao.filter(teacher.getSchool());
+		
+		//リクエストにデータをセット
+		req.setAttribute("sc_set", list);
+		req.setAttribute("name_set", list);
+		
+		//JSPへフォワード
+		req.getRequestDispatcher("subject_create.jsp").forward(req, res);
+		
+		
 	}
 	
-
 }

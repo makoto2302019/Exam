@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.Subject;
 import bean.Teacher;
 import dao.ClassNumDao;
 import dao.SubjectDao;
@@ -19,7 +18,7 @@ public class SubjectListAction extends Action {
 		Teacher teacher = (Teacher)session.getAttribute("user");
 		
 		ClassNumDao cNumDao = new ClassNumDao();// クラス番号Daoを初期化
-		SubjectDao suDao = new SubjectDao();// 
+		SubjectDao suDao = new SubjectDao();// 科目Daoを初期化
 		 LocalDate todaysDate = LocalDate.now();// LcalDateインスタンスを取得	
 		 int year = todaysDate.getYear();
 		
