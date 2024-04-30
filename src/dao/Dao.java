@@ -6,7 +6,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class Dao {
-	//test
 	/**
 	 * データソース:DataSource:クラスフィールド
 	 */
