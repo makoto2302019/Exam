@@ -7,35 +7,29 @@
 	<c:param name="scripts"></c:param>
 
 	<c:param name="content">
-		<section class="mp-4">
-			<form action = "StudentUpdateExecute.action" method="post">
-				<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">学生情報変更</h2>
+<section class="me-4">
+    <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目情報変更</h2>
+    <form action="SubjectUpdateExecute.action" method="post">
+        <!-- エラーメッセージ表示領域 -->
+        <c:if test="${not empty errorMessage}">
+            <div class="alert alert-danger" role="alert">
+                ${errorMessage}
+            </div>
+        </c:if>
+        <div class="me-4">
+            <label class="form-label" for="subject-code">科目コード</label><br>
+            <input class="form-control" id="subject-code" type="text" name="code" value="${subject.code}" maxlength="10" required/>
+        </div>
+        <div class="me-4">
+            <label class="form-label" for="subject-name">科目名</label><br>
+            <input class="form-control" id="subject-name" type="text" name="name" value="${subject.name}" maxlength="30" required/>
+        </div>
+        <div class="mt-4">
+            <input class="btn btn-lg btn-primary" type="submit" value="変更"/>
+        </div>
+    </form>
+    <a href="SubjectList.action" class="btn btn-secondary mt-3">戻る</a>
+</section>
 
-				<label>入学年度</label><br>
-				<input type="text" readonly="readonly" value=${ent_year } name="ent_yaer" style="border:none"><br>
-
-				<label>学生番号</label><br>
-				<input type="text" readonly="readonly" value=${no } name="no" style="border:none"><br>
-
-				<label>氏名</label><br>
-				<input type="text" name="name" value=${name } required="requier"><br>
-
-				<label>クラス</label><br>
-				<select name="class_num"><br>
-					<option value="0">${fnum}</option>
-					<c:forEach var="num" items="${num}">
-						<option>${num}</option>
-					</c:forEach>
-				</select><br>
-
-				<label>在学中</label>
-				<input type="checkbox" name="si_attend"><br>
-
-				<input type="submit" value="変更"><br>
-
-				<a href="StudentList.action">戻る</a>
-
-			</form>
-		</section>
 	</c:param>
 </c:import>

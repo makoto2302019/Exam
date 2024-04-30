@@ -38,13 +38,16 @@
 								<option value="${subject.id}" <c:if test="${subject.id==f3}">selected</c:if>>${subject.name}</option>
 							</c:forEach>
 						</select>
+											<div class="col-12 text-end mt-2">
+						<button class="btn btn-secondary" id="filter-button">検索</button>
+					</div>
 
 					</div>
 					<div class="col-4">
-						<label class="form-label" for="student-f1-select">回数</label>
+						<label class="form-label" for="student-f1-select">学生番号</label>
 						<select class="form-select" id="student-f1-select" name="f4">
 							<option value="0">--------</option>
-							<c:forEach var="year" items="${ent_year_set}">
+							<c:forEach var="year" items="${stu_num_set}">
 								<option value="${num}" <c:if test="${num==f4}">selected</c:if>>${num}</option>
 							</c:forEach>
 						</select>

@@ -7,7 +7,7 @@
 	<c:param name="scripts"></c:param>
 	<c:param name="content">
 		<section class="mp-4">
-			<h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
+			<h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">成績参照</h2>
 			<div class="my-2 text-end px-4">
 			</div>
 			<form method="get">
@@ -38,21 +38,21 @@
 								<option value="${subject.id}" <c:if test="${subject.id==f3}">selected</c:if>>${subject.name}</option>
 							</c:forEach>
 						</select>
+											<div class="col-12 text-end mt-2">
+						<button class="btn btn-secondary" id="filter-button">検索</button>
+					</div>
 
 					</div>
-					<div class="col-12 text-end mt-2">
-						<button class="btn btn-secondary" id="filter-button">検索</button>
-					</div>
-					<div class="col-4">
-						<label class="form-label" for="student-f1-select">回数</label>
-						<select class="form-select" id="student-f1-select" name="f1">
-							<option value="0">--------</option>
-							<c:forEach var="year" items="${num_num_set}">
+						<label class="form-label">学生番号</label>
+					<input type="text" class="from-text" name="no" size="85" required="requier" maxlength="10" placeholder="学生番号を入力してください"><br>
+							<c:forEach var="year" items="${stu_num_set}">
 								<option value="${num}" <c:if test="${num==f4}">selected</c:if>>${num}</option>
+							</c:forEach>
+						</select>
+					</div>
 					<div class="col-12 text-end mt-2">
 						<button class="btn btn-secondary" id="filter-button">検索</button>
 					</div>
-							</c:forEach>
 						</select>
 					</div>
 				</div>
