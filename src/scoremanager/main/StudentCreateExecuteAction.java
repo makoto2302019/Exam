@@ -65,7 +65,7 @@ public class StudentCreateExecuteAction extends Action{
 			req.setAttribute("errors_year", errors);
 
 			//フォワード
-			url = "StudentCreate.action";
+			url = "student_create_done.jsp";
 			req.getRequestDispatcher(url).forward(req, res);
 		}
 	}
