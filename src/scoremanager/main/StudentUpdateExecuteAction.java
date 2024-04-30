@@ -63,7 +63,7 @@ public class StudentUpdateExecuteAction extends Action{
 			req.setAttribute("errors", errors);
 
 			//フォワード
-			url = "StudentUpdate.action";
+			url = "Login.action";
 			req.getRequestDispatcher(url).forward(req, res);
 		}
 	}
