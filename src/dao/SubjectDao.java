@@ -71,7 +71,7 @@ public class SubjectDao extends Dao{
 
 	public List<Subject> filter(School school) throws Exception {
 
-		private String baseSql = "select * from subject where school_cd=?";
+		String baseSql = "select * from subject where school_cd=?";
 
 		// リストを初期化
 		List<Subject> list = new ArrayList<> ();
@@ -192,8 +192,6 @@ public class SubjectDao extends Dao{
 
 	public boolean delete(Subject subject) throws Exception {
 
-		// 科目インスタンスを初期化
-		Subject subject = new Subject();
 		// データベースへのコネクションを確立
 		Connection connection = getConnection();
 		// プリペアードステートメント
@@ -205,5 +203,6 @@ public class SubjectDao extends Dao{
 		// プライベートステートに値をバインド
 		statement.setString(1, subject.getCd());
 
+		return true;
 	}
 }
