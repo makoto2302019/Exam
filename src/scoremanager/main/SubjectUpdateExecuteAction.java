@@ -14,9 +14,16 @@ public class SubjectUpdateExecuteAction extends Action {
 		
 					
 					Subject subject = new Subject();
-					subject.getCd();
-					subject.getSchool();
-					subject.getName();
+					String subCd = req.getParameter("cd");
+					String subName = req.getParameter("name");
+					
+//					subject.getCd();
+//					subject.getSchool();
+//					subject.getName();
+					
+					Subject p= new Subject();
+					p.setCd(subCd);
+					p.setName(subName);
  
 					//科目Dao
 					SubjectDao sDao= new SubjectDao();
