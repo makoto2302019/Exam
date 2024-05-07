@@ -154,7 +154,7 @@ public class TestDao extends Dao{
 
 	public  boolean save(List<Test> list) {
 		// saveメソッド呼び出して繰り返し処理をする
-		
+
 	}
 
 
@@ -169,19 +169,18 @@ public class TestDao extends Dao{
 
 		try {
 			// データベースから学生を取得
-			Student old = get(student.getNo());
+			Student old = get(test.getNo());
 			if (old == null) {
 				//学生が存在しなかった場合
 				//プライベートステートにINSERT文をセット
 				statement = connection.prepareStatement(
-						"insert into test() values(?, ?, ?, ?, ?, ?)");
+						"insert into test() values(?, ?, ?, ?, ?)");
 				// プライベートステートに値をバインド
-				statement.setString(1, student.getNo());
-				statement.setString(2, student.getName());
-				statement.setInt(3, student.getEntYear());
-				statement.setString(4, student.getClassNum());
-				statement.setBoolean(5, student.isAttend());
-				statement.setString(6, student.getSchool().getCd());
+				statement.setString(1, test.getStudent().getCd());
+				statement.setString(2, test.getSubject().getCd());
+				statement.setString(3, test.getSchool().getCd());
+				statement.setString(4, test.getStudent().getName());
+				statement.setInt(5, test.getPoint());
 			} else {
 				// 学生が存在した場合
 				// プリペアードステートメントにUPDATE文をセット
@@ -226,13 +225,13 @@ public class TestDao extends Dao{
 			return false;
 		}
 	}
-	
+
 
 	public boolean delete(List<Test> list) {
-		// 
+		return true;
 	}
 
 	private boolean delete(Test test, Connection connection) {
-
+		return true;
 	}
 }
