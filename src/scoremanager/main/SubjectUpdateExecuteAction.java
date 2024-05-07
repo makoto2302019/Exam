@@ -13,7 +13,6 @@ public class SubjectUpdateExecuteAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		
 					
-					Subject subject = new Subject();
 					String subCd = req.getParameter("cd");
 					String subName = req.getParameter("name");
 					
@@ -28,7 +27,7 @@ public class SubjectUpdateExecuteAction extends Action {
 					//科目Dao
 					SubjectDao sDao= new SubjectDao();
 					//DBに保存
-					sDao.save(subject);
+					sDao.save(p);
 					//登録完了
  
 					//JSPへフォワード
