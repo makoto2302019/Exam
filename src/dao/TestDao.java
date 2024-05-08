@@ -80,17 +80,41 @@ public class TestDao extends Dao{
 		try {
 			// リザルトセットを全権走査
 			while (rSet.next()) {
+
 				// 学生インスタンスを初期化
-				Test test = new Test();
+				Student student = new Student();
 				// 学生インスタンスに検索結果をセット
-				test.setStudent(rSet.getStudent());
+				student.setNo(rSet.getString("no"));
+				student.setName(rSet.getString("name"));
+				student.setEntYear(rSet.getInt("ent_year"));
+				student.setClassNum(rSet.getString("class_num"));
+				student.setAttend(rSet.getBoolean("is_attend"));
+				student.setCd(rSet.getString("school_cd"));
+
+				// 学校インスタンスを初期化
+				School school = new School();
+				// 学校インスタンスに検索結果をセット
+				school.setCd(rSet.getString("cd"));
+				school.setName(rSet.getString("name"));
+
+				// 科目インスタンスを初期化
+				Subject subject = new Subject();
+				// 科目インスタンスに検索結果をセット
+				subject.setSchool(school);
+				subject.setCd(rSet.getString("school_cd"));
+				subject.setName(rSet.getString("name"));
+
+				// 成績インスタンスを初期化
+				Test test = new Test();
+				// 成績インスタンスに検索結果をセット
+				test.setStudent(student);
 				test.setClassNum(rSet.getString("class_num"));
-				test.setSubject(rSet.getSubject("ent_year"));
-				test.setClassNum(rSet.getString(""));
-				test.setAttend(rSet.getBoolean("is_attend"));
+				test.setSubject(subject);
 				test.setSchool(school);
+				test.setNo(rSet.getInt("no"));
+				test.setPoint(rSet.getInt("point"));
 				// リストに追加
-				list.add(student);
+				list.add(test);
 			}
 		}catch (SQLException | NullPointerException e) {
 			e.printStackTrace();
@@ -100,10 +124,10 @@ public class TestDao extends Dao{
 
 	}
 
-	public List<Test> filter(int entYear, String classNum, Subject subject, int num, School school) {
+	public List<Test> filter(int entYear, String classNum, Subject subject, int num, School school) throws Exception {
 		// 成績一覧の学生情報をだす
 		// リストを初期化
-		List<Student> list = new ArrayList<> ();
+		List<Test> list= new ArrayList<> ();
 		// コネクションを確率
 		Connection connection = getConnection();
 		// プリペアードステートメント
@@ -152,16 +176,32 @@ public class TestDao extends Dao{
 		return list;
 	}
 
-	public  boolean save(List<Test> list) {
+	public  boolean save(List<Test> list) throws Exception {
 		// saveメソッド呼び出して繰り返し処理をする
 
+		boolean scusess = false;
+
+		try{
+			for(Test test : list) {
+
+
+				Connection connection = getConnection();
+
+				scusess = save(test, connection);
+
+				if (scusess == false) {
+					break;
+				}
+			}
+		}catch (Exception e) {
+			throw e;
+		}
+		return scusess;
 	}
 
 
-	private boolean save(Test test, Connection connection) {
+	private boolean save(Test test, Connection connection) throws Exception {
 		// インサート、アップデートを書く
-		// コネクションを確立
-		Connection connection = getConnection();
 		// プライベートステート
 		PreparedStatement statement = null;
 		// 実行件数
@@ -169,28 +209,30 @@ public class TestDao extends Dao{
 
 		try {
 			// データベースから学生を取得
-			Student old = get(test.getNo());
+			Test old = get(test.getStudent(),test.getSubject(),test.getSchool(),test.getNo());
 			if (old == null) {
 				//学生が存在しなかった場合
 				//プライベートステートにINSERT文をセット
 				statement = connection.prepareStatement(
-						"insert into test() values(?, ?, ?, ?, ?)");
+						"insert into test(student_no, subject_cd, school_cd, no, point, class_num) values(?, ?, ?, ?, ?, ?)");
 				// プライベートステートに値をバインド
-				statement.setString(1, test.getStudent().getCd());
+				statement.setString(1, test.getStudent().getNo());
 				statement.setString(2, test.getSubject().getCd());
 				statement.setString(3, test.getSchool().getCd());
-				statement.setString(4, test.getStudent().getName());
+				statement.setInt(4, test.getNo());
 				statement.setInt(5, test.getPoint());
+				statement.setString(6, test.getClassNum());
 			} else {
 				// 学生が存在した場合
 				// プリペアードステートメントにUPDATE文をセット
-				statement = connection.prepareStatement("update student set name=?, ent_year=?, class_num=?, is_attend=? where no=?");
+				statement = connection.prepareStatement("update test set subject_cd=?, school_cd=?, no=?, point=?, class_num where student_no=?");
 				// プリペアードステートメントに値をバインド
-				statement.setString(1, student.getName());
-				statement.setInt(2, student.getEntYear());
-				statement.setString(3, student.getClassNum());
-				statement.setBoolean(4, student.isAttend());
-				statement.setString(5, student.getNo());
+				statement.setString(1, test.getSubject().getCd());
+				statement.setString(2, test.getSchool().getCd());
+				statement.setInt(3, test.getNo());
+				statement.setInt(4, test.getPoint());
+				statement.setString(5, test.getClassNum());
+				statement.setString(6, test.getStudent().getNo());
 			}
 
 			// プリペアードステートメントを実行
