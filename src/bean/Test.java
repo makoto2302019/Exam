@@ -1,6 +1,5 @@
 package bean;
 
-import javax.security.auth.Subject;
 
 public class Test {
 	   private Student student;
@@ -9,6 +8,7 @@ public class Test {
 	   private School school;
 	   private int no;
 	   private int point;
+
 //
 	   public Student getStudent() {
 	       return student;
