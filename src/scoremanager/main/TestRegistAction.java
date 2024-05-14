@@ -82,7 +82,7 @@ public class TestRegistAction extends Action {
 		req.setAttribute("class_num_set", list1);
 		req.setAttribute("test_set", tests);
 		//JSPへフォワード
-		req.getRequestDispatcher("test_tegist.jsp").forward(req, res);
+		req.getRequestDispatcher("test_regist.jsp").forward(req, res);
 	}
 
 }
