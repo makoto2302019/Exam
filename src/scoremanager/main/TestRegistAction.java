@@ -78,6 +78,8 @@ public class TestRegistAction extends Action {
 		
 		
 		//リクエストにデータをセット
+		//req.setAttribute("ent_year_set", );
+		//req.setAttribute("ent_year_set", entYear);
 		req.setAttribute("subject_set", list);
 		req.setAttribute("class_num_set", list1);
 		req.setAttribute("test_set", tests);
