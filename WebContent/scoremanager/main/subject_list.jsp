@@ -34,32 +34,32 @@
 <tr>
 <td>A02</td>
 <td>国語</td>
-<td><a href="#">変更</a></td>
-<td><a href="#">削除</a></td>
+<td><a href="subject_update.jsp">変更</a></td>
+<td><a href="subject_delete.jsp">削除</a></td>
 </tr>
 <tr>
 <td>B02</td>
 <td>数学</td>
-<td><a href="#">変更</a></td>
-<td><a href="#">削除</a></td>
+<td><a href="subject_update.jsp">変更</a></td>
+<td><a href="subject_delete.jsp">削除</a></td>
 </tr>
 <tr>
 <td>C02</td>
 <td>英語コミュニケーション概論</td>
-<td><a href="#">変更</a></td>
-<td><a href="#">削除</a></td>
+<td><a href="subject_update.jsp">変更</a></td>
+<td><a href="subject_delete.jsp">削除</a></td>
 </tr>
 <tr>
 <td>D02</td>
 <td>理科</td>
-<td><a href="#">変更</a></td>
-<td><a href="#">削除</a></td>
+<td><a href="subject_update.jsp">変更</a></td>
+<td><a href="subject_delete.jsp">削除</a></td>
 </tr>
 <tr>
 <td>E02</td>
 <td>情報処理基礎知識1</td>
-<td><a href="#">変更</a></td>
-<td><a href="#">削除</a></td>
+<td><a href="subject_update.jsp">変更</a></td>
+<td><a href="subject_delete.jsp">削除</a></td>
 </tr>
 </tbody>
 </table>
