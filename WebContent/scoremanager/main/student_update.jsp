@@ -1,4 +1,3 @@
-[11:24] 日髙　雄太 (ゲスト)
 <%-- 学生変更JSP --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
