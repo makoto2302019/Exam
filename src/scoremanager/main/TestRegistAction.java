@@ -1,5 +1,7 @@
 package scoremanager.main;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +49,8 @@ public class TestRegistAction extends Action {
 		String Countstr ="";//入力された回数
 		int entYear = 0;//入学年度
 		int Count = 0;
+		LocalDate todaysDate = LocalDate.now();// LcalDateインスタンスを取得
+		int year = todaysDate.getYear();// 現在の年を取得
 		
 		entYearStr = req.getParameter("f1");
 		classNum = req.getParameter("f2");
@@ -75,12 +79,17 @@ public class TestRegistAction extends Action {
 			
 			tests  = tesDao.filter(entYear,classNum,subject,Count,teacher.getSchool());
 		}
-		
+		// リストを初期化
+				List<Integer> entYearSet = new ArrayList<>();
+				// 10年前から1年後まで年をリストに追加
+				for (int i = year -10; i < year + 1; i++) {
+					entYearSet.add(i);
+				}
 		
 		//リクエストにデータをセット
 		//req.setAttribute("ent_year_set", );
-		//req.setAttribute("ent_year_set", entYear);
-		req.setAttribute("subject_set", list);
+		req.setAttribute("ent_year_set", entYearSet);
+		req.setAttribute("subject_list", list);
 		req.setAttribute("class_num_set", list1);
 		req.setAttribute("test_set", tests);
 		//JSPへフォワード
