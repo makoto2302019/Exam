@@ -19,11 +19,11 @@
 
 					<label class="form-label" >入学年度 </label>
 
-					<select class="form-select" name="ent_yaer">
+					<select class="form-select" name="ent_yaer" style="width: 660px;">
 						<option value="0">--------</option>
 						<c:forEach var="year" items="${ent_year_set}">
 							<%-- 現在のyearと選択されていたf1が一致していた場合selectedを追記 --%>
-							<option value="${year}" <c:if test="${year==ent_yaer_set}">selected</c:if>>${year}</option>
+							<option value="${year}"<c:if test="${year==ent_yaer_set}">selected</c:if>>${year}</option>
 							<
 						</c:forEach>
 					</select>
@@ -35,7 +35,7 @@
 					<input type="text" name="name" size="85" required="requier" maxlength="30" placeholder="氏名を入力してください"><br>
 
 					<label class="form-label">クラス</label><br>
-					<select class="form-select " id="student-f2-select" name="class_num">
+					<select class="form-select " id="student-f2-select" name="class_num" style="width: 660px;">
 
 						<c:forEach var="num" items="${class_num_set}">
 							<%-- 現在のnumと選択されていたf2が一致していた場合selectdを追記 --%>
@@ -44,7 +44,7 @@
 
 					</select>
 
-					<input type="submit" value="登録して終了">
+					<input type="submit" value="登録して終了"></br>
 					<a href="StudentList.action">戻る</a>
 
 				</div>
