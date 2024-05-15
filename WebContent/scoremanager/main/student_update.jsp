@@ -13,9 +13,9 @@
 		得点管理システム
 
 </c:param>
- 
+
 <c:param name="scripts"></c:param>
- 
+
 <c:param name="content">
 
 	<section class="my-2 me-4">
@@ -58,11 +58,11 @@
 
 				<select class="form-select " id="student-f2-select" name="class_num">
 
-					<c:forEach var="num" items="${class_num_set}">
+					<c:forEach var="num" items="${num}">
 
 						<%--現在のnumと選択されていたf2が一致していた場合selectedを追記--%>
 
-						<option value="${num}" <c:if test="${num == class_num}">selected</c:if>>${num}</option>
+						<option value="${num}" <c:if test="${num == fnum}">selected</c:if>>${num}</option>
 
 					</c:forEach>
 

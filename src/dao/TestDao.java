@@ -135,9 +135,9 @@ public class TestDao extends Dao{
 		// リザルトセット
 		ResultSet rSet = null;
 		// SQL分の条件
-		String condition = "and ent_year=? and class_num";
-		// SQL分のソート
-		String order = " order by no asc";
+//		String condition = "and ent_year=? and class_num";
+//		// SQL分のソート
+//		String order = " order by no asc";
 
 		try {
 			// プリペアードステートメントにSQL文をセット
