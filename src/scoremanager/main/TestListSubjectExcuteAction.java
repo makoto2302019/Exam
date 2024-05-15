@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Student;
 import bean.Subject;
 import bean.Teacher;
+import bean.TestListStudent;
 import bean.TestListSubject;
 import dao.ClassNumDao;
 import dao.StudentDao;
