@@ -13,10 +13,11 @@
 			<form method="get">
 				<div class="row border mx-3 py-2 align-items-center rounded" id="filter">
 					<div class="col-4">
-						<label class="form-label" for="student-f1-select">入学年度</label>
-						<select class="form-select" id="student-f1-select" name="f1">
+						<label class="form-label" for="student-f1-select">入学年度 </label>
+						<select class="form-select " id="student-f1-select" name="f1">
 							<option value="0">--------</option>
 							<c:forEach var="year" items="${ent_year_set}">
+								<%-- 現在のyearと選択されていたf1が一致していた場合selectedを追記 --%>
 								<option value="${year}" <c:if test="${year==f1}">selected</c:if>>${year}</option>
 							</c:forEach>
 						</select>
@@ -35,7 +36,7 @@
 						<select class="form-select" id="student-f3-select" name="f3">
 							<option value="0">--------</option>
 							<c:forEach var="subject" items="${subject_list}">
-								<option value="${subject.id}" <c:if test="${subject.id==f3}">selected</c:if>>${subject.name}</option>
+								<option value="${subject.cd}" <c:if test="${subject.cd==f3}">selected</c:if>>${subject.name}</option>
 							</c:forEach>
 						</select>
 						<div class="col-4">
