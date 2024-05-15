@@ -18,11 +18,11 @@ public class StudentUpdateExecuteAction extends Action{
 		//ローカル変数
 		String url = "";
 		//リクエストパラメーターの取得 2
-		Integer ent_year = Integer.parseInt(req.getParameter("ent_yaer"));
+		Integer ent_year = Integer.parseInt(req.getParameter("ent_year"));
 		String stuNum = req.getParameter("no");
 		String stuName = req.getParameter("name");
 		String classNum = req.getParameter("class_num");
-		boolean isAttend = req.getParameter("si_attend") != null;
+		boolean isAttend = req.getParameter("is_attend") != null;
 
 		// エラーメッセージをセット
 		List<String> errors = new ArrayList<>();

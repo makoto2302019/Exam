@@ -34,6 +34,7 @@ public class StudentUpdateAction extends Action{
 		req.setAttribute("name", a.getName());
 		req.setAttribute("num", list);
 		req.setAttribute("fnum", a.getClassNum());
+		req.setAttribute("is_attend", a.isAttend());
 
 		//JSPへフォワード 7
 		req.getRequestDispatcher("student_update.jsp").forward(req, res);

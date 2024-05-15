@@ -28,7 +28,7 @@
 
 				<label class="form-label" for="student-entyear">入学年度</label><br>
 
-				<input class="ps-3 border-0" id="student-entyear" value="${ent_year}" readonly/>
+				<input class="ps-3 border-0" id="student-entyear" value="${ent_year}" name="ent_year" readonly/>
 
 			</div>
 
@@ -74,7 +74,7 @@
 
 				<label for="student-check">在学中</label>
 
-				<input class="form-check-input" type="checkbox" id="student-check" name="is_attend" checked/>
+				<input class="form-check-input" type="checkbox" id="student-check" name="is_attend" checked="${is_attend}"/>
 
 			</div>
 
