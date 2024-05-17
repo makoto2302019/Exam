@@ -10,20 +10,24 @@ import dao.SubjectDao;
 import tool.Action;
 
 public class SubjectDeleteAction extends Action {
-	
+
 	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse response)throws Exception {
-		
+	public void execute(HttpServletRequest req, HttpServletResponse res)throws Exception {
+
 		//DBから科目の詳細を取得
 			HttpSession session = req.getSession();
 			Teacher teacher = (Teacher)session.getAttribute("user");
-			
-			SubjectDao subjectdao = new SubjectDao();
+
 			String cd = req.getParameter("cd");
+
+			SubjectDao subjectdao = new SubjectDao();
+
 			Subject subject = subjectdao.get(cd, teacher.getSchool());
-			
+
+			req.setAttribute("subject", subject);
+
 		//JSPへフォワード
-		req.getRequestDispatcher("subject_delete.jsp");
+			req.getRequestDispatcher("subject_delete.jsp").forward(req, res);
 	}
 
 }

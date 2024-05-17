@@ -204,6 +204,9 @@ public class SubjectDao extends Dao{
 		// プライベートステートに値をバインド
 		statement.setString(1, subject.getCd());
 
+		// プリペアードステートメントを実行
+		statement.executeUpdate();
+
 		return true;
 	}
 }
