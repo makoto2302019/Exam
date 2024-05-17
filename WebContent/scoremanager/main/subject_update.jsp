@@ -15,7 +15,7 @@
         </c:if>
         <div class="me-4">
             <label class="form-label" for="subject-code">科目コード</label><br>
-            <input class="form-control" id="subject-code" type="text" name="code" value="${subject.code}" maxlength="10" required/>
+            <input class="ps-3 border-0" id="subject-code" type="text" name="cd" value="${subject.cd}" maxlength="10" required readonly/>
         </div>
         <div class="me-4">
             <label class="form-label" for="subject-name">科目名</label><br>
