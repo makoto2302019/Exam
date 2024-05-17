@@ -17,7 +17,7 @@
 <form action="SubjectCreateExecute.action" method="post">
 <div class="me-4">
 <label class="form-label" for="subject-code">科目コード</label><br>
-<input class="form-control" id="subject-code" type="text" name="code" placeholder="科目コードを入力してください" required>
+<input class="form-control" id="subject-code" type="text" name="cd" placeholder="科目コードを入力してください" required>
 </div>
 <div class="me-4">
 <label class="form-label" for="subject-name">科目名</label><br>
