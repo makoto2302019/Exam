@@ -1,7 +1,7 @@
 package scoremanager.main;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,14 +22,14 @@ public class StudentCreateExecuteAction extends Action{
 		//ローカル変数
 		String url = "";
 		//リクエストパラメーターの取得 2
-		Integer ent_year = Integer.parseInt(req.getParameter("ent_yaer"));
+		Integer ent_year = Integer.parseInt(req.getParameter("ent_year"));
 		String stuNum = req.getParameter("no");
 		String stuName = req.getParameter("name");
 		String classNum = req.getParameter("class_num");
 		boolean isAttend = true;
 
 		// エラーメッセージをセット
-		List<String> errors = new ArrayList<>();
+		Map<String, String> errors = new HashMap<>();// エラーメッセージ
 
 		if (ent_year != 0) {// 入学年度が入力されていた場合
 
@@ -49,7 +49,7 @@ public class StudentCreateExecuteAction extends Action{
 			}
 			else {
 				// 学生番号が重複している場合
-				errors.add("学生番号が重複しています。");
+				errors.put("f2", "学生番号が重複しています。");
 				req.setAttribute("errors_num", errors);
 
 				//フォワード
@@ -61,11 +61,11 @@ public class StudentCreateExecuteAction extends Action{
 
 		} else {
 			// 入力年度ば未入力の場合
-			errors.add("入学年度を選択してください");
+			errors.put("f1", "入学年度を選択してください");
 			req.setAttribute("errors_year", errors);
 
 			//フォワード
-			url = "student_create_done.jsp";
+			url = "student_create.jsp";
 			req.getRequestDispatcher(url).forward(req, res);
 		}
 	}

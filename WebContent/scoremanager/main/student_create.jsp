@@ -19,7 +19,7 @@
 
 					<label class="form-label" >入学年度 </label>
 
-					<select class="form-select" name="ent_yaer" style="width: 660px;">
+					<select class="form-select" name="ent_year" style="width: 660px;">
 						<option value="0">--------</option>
 						<c:forEach var="year" items="${ent_year_set}">
 							<%-- 現在のyearと選択されていたf1が一致していた場合selectedを追記 --%>
@@ -27,9 +27,11 @@
 							<
 						</c:forEach>
 					</select>
+					<div class="mt-2 text-warning">${errors_year.get("f1")}</div>
 
 					<label class="form-label">学生番号</label>
 					<input type="text" class="from-text" name="no" size="85" required="requier" maxlength="10" placeholder="学生番号を入力してください"><br>
+					<div class="mt-2 text-warning">${errors_num.get("f2")}</div>
 
 					<label class="form-label">氏名</label><br>
 					<input type="text" name="name" size="85" required="requier" maxlength="30" placeholder="氏名を入力してください"><br>
@@ -41,6 +43,7 @@
 							<%-- 現在のnumと選択されていたf2が一致していた場合selectdを追記 --%>
 							<option value="${num}" <c:if test="${num==class_num_set}">selected</c:if>>${num}</option>
 						</c:forEach>
+
 
 					</select>
 
