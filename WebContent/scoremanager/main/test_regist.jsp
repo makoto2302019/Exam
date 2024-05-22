@@ -74,12 +74,11 @@
 								<td>${test.student.classNum}</td>
 								<td>${test.student.no}</td>
 								<td>${test.student.name}</td>
-								<td>${test.point}
-								<td><a href="StudentUpdate.action?no=${student.no}">変更</a></td>
-								<td><a href="StudentDelete.action?no=${student.no}">削除</a></td>
+								<td><input type="text" value="${test.point}"></td>
 							</tr>
 						</c:forEach>
 					</table>
+					<button class="btn btn-secondary" id="filter-button">登録して終了</button>
 				</c:when>
 				<c:otherwise>
 				</c:otherwise>
