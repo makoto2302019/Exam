@@ -57,7 +57,7 @@
 			</form>
 			<c:choose>
 				<c:when test="${test_set.size()>0}">
-					<div>科目:${test_set.subject.name}(${test_set.no}回)</div>
+					<%-- <div>科目:${test_set.subject.name}(${test_set.no}回)</div> --%>
 					<table class="table table-hover">
 						<tr>
 							<th>入学年度</th>
