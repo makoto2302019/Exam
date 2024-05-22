@@ -106,7 +106,7 @@ public class StudentDao extends Dao{
 		// リザルトセット
 		ResultSet rSet = null;
 		// SQL分の条件
-		String condition = "and ent_year=? and class_num";
+		String condition = "and ent_year=? and class_num=?";
 		// SQL分のソート
 		String order = " order by no asc";
 

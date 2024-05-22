@@ -40,6 +40,10 @@ public class StudentListAction extends Action {
 		//DBからデータ取得 3
 		// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 		List<String> list = cNumDao.filter(teacher.getSchool());
+		if (entYearStr !=null) {
+			//数値に変換
+			entYear = Integer.parseInt(entYearStr);
+		}
 
 		if (entYear !=0 && !classNum.equals("0")) {
 			// 入学年度とクラス番号を指定
@@ -58,10 +62,7 @@ public class StudentListAction extends Action {
 			students = sDao.filter(teacher.getSchool(), isAttend);
 		}
 		//ビジネスロジック 4
-		if (entYearStr !=null) {
-			//数値に変換
-			entYear = Integer.parseInt(entYearStr);
-		}
+
 		// リストを初期化
 		List<Integer> entYearSet = new ArrayList<>();
 		// 10年前から1年後まで年をリストに追加
