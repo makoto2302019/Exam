@@ -28,9 +28,6 @@ public class SubjectDao extends Dao{
 			// プライベートステートを実行
 			ResultSet rSet = statement.executeQuery();
 
-			// SubjectDaoを初期化
-			SubjectDao subjectDao = new SubjectDao();
-
 			if (rSet.next()) {
 				// リザルトセットが存在する場合
 				// 学生インスタンスに検索結果をセット

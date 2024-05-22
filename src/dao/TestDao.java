@@ -88,30 +88,28 @@ public class TestDao extends Dao{
 				student.setName(rSet.getString("name"));
 				student.setEntYear(rSet.getInt("ent_year"));
 				student.setClassNum(rSet.getString("class_num"));
-				student.setAttend(rSet.getBoolean("is_attend"));
-				student.setCd(rSet.getString("school_cd"));
+//				student.setAttend(rSet.getBoolean("is_attend"));
+//				student.setCd(rSet.getString("school_cd"));
 
-				// 学校インスタンスを初期化
-				School school = new School();
 				// 学校インスタンスに検索結果をセット
-				school.setCd(rSet.getString("cd"));
-				school.setName(rSet.getString("name"));
+//				school.setCd(rSet.getString("cd"));
+//				school.setName(rSet.getString("name"));
 
 				// 科目インスタンスを初期化
 				Subject subject = new Subject();
-				// 科目インスタンスに検索結果をセット
-				subject.setSchool(school);
-				subject.setCd(rSet.getString("school_cd"));
-				subject.setName(rSet.getString("name"));
+//				// 科目インスタンスに検索結果をセット
+//				subject.setSchool(school);
+//				subject.setCd(rSet.getString("school_cd"));
+				subject.setName(rSet.getString("subName"));
 
 				// 成績インスタンスを初期化
 				Test test = new Test();
 				// 成績インスタンスに検索結果をセット
-				test.setStudent(student);
-				test.setClassNum(rSet.getString("class_num"));
+//				test.setClassNum(rSet.getString(student.getClassNum()));
 				test.setSubject(subject);
-				test.setSchool(school);
-				test.setNo(rSet.getInt("no"));
+//				test.setSchool(school);
+//				test.setNo(rSet.getInt(student.getNo()));
+				test.setStudent(student);
 				test.setPoint(rSet.getInt("point"));
 				// リストに追加
 				list.add(test);
@@ -141,13 +139,17 @@ public class TestDao extends Dao{
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("SELECT * FROM test join student on student.no = test.student_nojoin subject on test.subject_cd = subject.cdwhere student.ent_year = 2023and student.class_num = 131 and  subject.name = '英語'and student.name = '大原太郎'");
+			statement = connection.prepareStatement("SELECT student.ent_year, student.class_num,student.no,student.name,test.point,subject.name as subName FROM test join student on student.no = test.student_no join subject on test.subject_cd = subject.cd where test.school_cd= ? and student.ent_year = ? and student.class_num = ? and  subject.cd = ? and test.no = ?");
 			// プリペアードステートメントに学校コードをバインド
 			statement.setString(1, school.getCd());
 			// プリペアードステートメントに入学年度をバインド
 			statement.setInt(2, entYear);
 			// プリペアードステートメントにクラス番号をバインド
 			statement.setString(3, classNum);
+			// プリペアードステートメントにクラス番号をバインド
+			statement.setString(4, subject.getCd());
+			// プリペアードステートメントにクラス番号をバインド
+			statement.setInt(5, num);
 			// プライベートステートメントを実行
 			rSet = statement.executeQuery();
 			//リストへの格納処理を実行

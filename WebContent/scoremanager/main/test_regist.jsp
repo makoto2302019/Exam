@@ -10,7 +10,7 @@
 			<h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
 			<div class="my-2 text-end px-4">
 			</div>
-			<form method="get">
+			<form action="TestRegist.action" method="get">
 				<div class="row border mx-3 py-2 align-items-center rounded" id="filter">
 					<div class="col-4">
 						<label class="form-label" for="student-f1-select">入学年度 </label>
@@ -40,48 +40,41 @@
 							</c:forEach>
 						</select>
 						<div class="col-4">
-						<label class="form-label" for="student-f1-select">回数</label>
-						<select class="form-select" id="student-f1-select" name="f4">
-							<option value="0">--------</option>
-							<c:forEach var="year" items="${stu_num_set}">
-								<option value="${num}" <c:if test="${num==f4}">selected</c:if>>${num}</option>
-							</c:forEach>
-						</select>
-					</div>
-											<div class="col-12 text-end mt-2">
-						<button class="btn btn-secondary" id="filter-button">検索</button>
-					</div>
-
-					</div>
-						</select>
+							<label class="form-label" for="student-f1-select">回数</label>
+							<select class="form-select" id="student-f1-select" name="f4">
+								<option value="0">--------</option>
+								<option value="1">1</option>
+								<c:forEach var="year" items="${stu_num_set}">
+									<option value="${num}" <c:if test="${num==f4}">selected</c:if>>${num}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="col-12 text-end mt-2">
+							<button class="btn btn-secondary" id="filter-button">検索</button>
+						</div>
 					</div>
 				</div>
 			</form>
 			<c:choose>
-				<c:when test="${students.size()>0}">
-					<div>検索結果:${students.size()}件</div>
+				<c:when test="${test_set.size()>0}">
+					<div>科目:${test_set.subject.name}(${test_set.no}回)</div>
 					<table class="table table-hover">
 						<tr>
 							<th>入学年度</th>
+							<th>クラス</th>
 							<th>学生番号</th>
 							<th>氏名</th>
-							<th>クラス</th>
-							<th class="text-center">在学中</th>
+							<th>点数</th>
 							<th></th>
 							<th></th>
 						</tr>
-						<c:forEach var="student" items="${students}">
+						<c:forEach var="test" items="${test_set}">
 							<tr>
-								<td>${student.entYear}</td>
-								<td>${student.no}</td>
-								<td>${student.name}</td>
-								<td>${student.classNum}</td>
-								<td class="text-center">
-									<c:choose>
-										<c:when test="${student.isAttend()}">〇</c:when>
-										<c:otherwise>☓</c:otherwise>
-									</c:choose>
-								</td>
+								<td>${test.student.entYear}</td>
+								<td>${test.student.classNum}</td>
+								<td>${test.student.no}</td>
+								<td>${test.student.name}</td>
+								<td>${test.point}
 								<td><a href="StudentUpdate.action?no=${student.no}">変更</a></td>
 								<td><a href="StudentDelete.action?no=${student.no}">削除</a></td>
 							</tr>
